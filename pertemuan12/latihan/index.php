@@ -1,24 +1,24 @@
-<?php
-//................
+<?php 
+// -------------------------
 // Contoh GET
-//................
-$keyword = trim($_GET['keyword'] ??'');
-$kategori = trims($_GET['kategori'] ?? 'Semua');
->?
+// -------------------------
+$keyword = trim($_GET['keyword'] ?? '');
+$kategori = trim($_GET['kategori'] ?? 'Semua');
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Materi Dasar PHP Form - GET</title>
 </head>
 <body>
-    <h2>1) Contoh Form GET</h2>
+    <h2>) Contoh Form GET</h2>
     <form method="GET" action="">
         <label for="keyword">Keyword pencarian</label>
-        <input id="keyword" name="keyword" type="text"
-        value="<?= htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8') ?>"
-        placeholder="Contoh: laptop">
+        <input id="keyword" name="keyword" type="text" 
+               value="<?= htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8') ?>" 
+               placeholder="Contoh: laptop">
 
         <label for="kategori">Kategori</label>
         <select id="kategori" name="kategori">
@@ -36,6 +36,6 @@ $kategori = trims($_GET['kategori'] ?? 'Semua');
             Keyword: <?= htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8') ?><br>
             Kategori: <?= htmlspecialchars($kategori, ENT_QUOTES, 'UTF-8') ?>
         </div>
-    <?php endif; ?> 
+    <?php endif; ?>
 </body>
 </html>
