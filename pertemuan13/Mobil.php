@@ -7,12 +7,12 @@ class Mobil{
     public $merk;
 
     //Cara penulisan method
-    function maju(){
+    function maju() {
         // isi method maju()
         return "Mobil maju";
     }
 
-    function berhenti(){
+    function berhenti() {
         // isi method berhenti()
         return "Mobil berhenti";
     }
@@ -23,10 +23,10 @@ class Mobil{
 // membuat inisial namespace
 use Kendaraan\Mobil as KMobil;
 
-// instansi object dari namespace alias
+// instansiasi object dari namespace alias
 $mobil_ahmad = new KMobil();
 
-// instansi object
+// instansiasi object
 // $mobil_ahmad = new Mobil();
 $mobil_anton = new Mobil();
 
@@ -36,12 +36,12 @@ $mobil_ahmad->warna = "Hitam";
 $mobil_ahmad->merk = "Toyota";
 
 // tampilkan property
-echo "Mobil Ahmad"
+echo "Mobil Ahmad";
 echo "<br>Warna : ". $mobil_ahmad->warna;
 echo "<br>Merk : ". $mobil_ahmad->merk;
 
 // tampilkan method
-echo $mobill_ahmad->maju();
+echo $mobil_ahmad->maju();
 echo "<br>";
 echo $mobil_ahmad->berhenti();
 ?>
