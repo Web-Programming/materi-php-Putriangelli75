@@ -1,16 +1,15 @@
 <?php
-// Memuat file class
-require_once 'Produk.php';
-require_once 'Service.php';
+require_once "app/produk/Item.php";
+include "app/service/Item.php";
 
-// Menggunakan alias (use) karena nama class-nya sama
+// Menggunakan alias untuk menghindari konflik nama
 use App\Produk\Item as ProdukItem;
 use App\Service\Item as ServiceItem;
 
-// Membuat instance dari class Item milik App\Produk
-$itemProduk = new ProdukItem("Laptop Asus");
-echo $itemProduk->info();
+// Membuat instance
+$produk = new ProdukItem("Laptop");
+$service = new ServiceItem("Perbaikan Laptop");
 
-// Membuat instance dari class Item milik App\Service
-$itemService = new ServiceItem("Instalasi Windows");
-echo $itemService->info();
+// Menampilkan hasil
+echo $produk->info() ."\n";
+echo $service->info();
