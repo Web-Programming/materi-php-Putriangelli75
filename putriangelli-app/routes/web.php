@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route ke halaman utama (home)
 Route::get('/', function () {
-    echo "Hallo, Nama Saya Pak JR";
+    echo "Hallo, Nama Saya Putri Angel Li";
     //return view('welcome');
 });
 //Route ke halaman alamat
@@ -117,4 +117,5 @@ Route::get('/produk/search', ProductController::class.'@search');
 // });
 
 //php artisan make:controller SupplierController --resource
+use App\Http\Controllers\SupplierController;
 Route::resource('/supplier', SupplierController::class);
