@@ -4,7 +4,7 @@
  */
 
 // Import class dengan use statement
-use App\\Kendaraan\\Kendaraan as Kendaraan;
+use App\Kendaraan\Kendaraan as Kendaraan;
 
 $kendaraan_ahmad = new Kendaraan();
 $kendaraan_anton = new Kendaraan();

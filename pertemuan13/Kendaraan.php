@@ -1,5 +1,5 @@
 <?php
-namespace App\\Kendaraan;
+namespace App\Kendaraan;
 
 /**
  * Contoh Class Kendaraan dengan Namespace PHP
