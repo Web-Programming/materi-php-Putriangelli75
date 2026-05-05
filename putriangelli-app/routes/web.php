@@ -119,3 +119,4 @@ Route::get('/produk/search', ProductController::class.'@search');
 //php artisan make:controller SupplierController --resource
 use App\Http\Controllers\SupplierController;
 Route::resource('/supplier', SupplierController::class);
+
