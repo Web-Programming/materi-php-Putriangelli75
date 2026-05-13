@@ -36,7 +36,7 @@
                     <strong>ID Supplier:</strong>
                 </div>
                 <div class="col-md-9">
-                    {{ $supplier['id'] }}
+                    {{ $supplier->id }}
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
                     <strong>Nama Supplier:</strong>
                 </div>
                 <div class="col-md-9">
-                    {{ $supplier['name'] }}
+                    {{ $supplier->name }}
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     <strong>Telepon:</strong>
                 </div>
                 <div class="col-md-9">
-                    <i class="bi bi-telephone"></i> {{ $supplier['phone'] }}
+                    <i class="bi bi-telephone"></i> {{ $supplier->phone }}
                 </div>
             </div>
 
@@ -63,12 +63,12 @@
                     <strong>Alamat:</strong>
                 </div>
                 <div class="col-md-9">
-                    <i class="bi bi-geo-alt"></i> {{ $supplier['address'] }}
+                    <i class="bi bi-geo-alt"></i> {{ $supplier->address ?? '-' }}
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ url('/supplier/' . $supplier['id'] . '/edit') }}" class="btn btn-primary">
+            <a href="{{ url('/supplier/' . $supplier->id . '/edit') }}" class="btn btn-primary">
                 <i class="bi bi-pencil"></i> Edit Supplier
             </a>
             <a href="{{ url('/supplier') }}" class="btn btn-secondary">
