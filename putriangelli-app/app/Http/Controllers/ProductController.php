@@ -37,7 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        $title = "Tambah Produk";
+        return view('produk.create', compact('title'));
     }
 
     /**
@@ -45,7 +46,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validated = $request->validate([...]); // validasi input
+       $validated['is_active'] = $request->has('is_active') ? 1 : 0; // tangani checkbox
+       Product::create($validated); // simpan ke DB
+       return redirect()->route('produk.index')
+            ->with('success', 'Produk berhasil ditambahkan.');
     }
 
     /**
@@ -63,7 +68,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        return view('produk.edit', ['id' => $id]);
+        $title = "Edit Produk";
+        $product = Product::findOrFail($id);
+        return view('produk.edit', compact('product', 'title'));
     }
 
     /**
@@ -71,7 +78,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $validated = $request->validate([...]);
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
+        $product->update($validated);
+        return redirect()->route('produk.index')
+        ->with('success', 'Produk berhasil diperbarui.');
     }
 
     /**
@@ -79,7 +91,10 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('produk.index')
+        ->with('success', 'Produk berhasil dihapus.');
     }
 
     function search(Request $request)
