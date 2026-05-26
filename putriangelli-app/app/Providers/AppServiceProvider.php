@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
+use App\Policies\ProductPolicy;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
@@ -21,21 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //untuk mengelola product hanya dilakukan oleh admin
-        Gate::define('manage-products', function ($user) {
-            return $user->role == 'admin';
-        });
-        //untuk update product dapat dilakukan oleh admin dan sales
-        Gate::define('update-product', function (User $user){
-            return $user->role == 'admin' || $user->role == 'sales';
-        });
-        //untuk menghapus product hanya dilakukan oleh admin
-        Gate::define('delete-products', function (User $user){
-            return $user->role == 'admin';
-        });
-        //untuk membuat product dapat dilakukan oleh user yang sudah login 
-        Gate::define('create-products', function (User $user){
-            return $user !== null;
-        });
+        Paginator::useBootstrapFive();
+        //cara 1: mendaftarkan policy secara manual
+        //Gate::policy(Product::class, ProductPolicy::class);
     }
 }
