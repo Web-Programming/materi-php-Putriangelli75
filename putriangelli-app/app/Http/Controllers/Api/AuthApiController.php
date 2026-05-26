@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class AuthApiController extends Controller
 {
@@ -32,7 +31,7 @@ class AuthApiController extends Controller
         ]);
 
         // Buat token untuk user yang baru daftar
-        $token = $user->createToken('api-token')->plainTextToken;
+        $token = $user->createToken('api-cepu-app')->plainTextToken;
 
         return response()->json([
             'status'  => 'success',
@@ -69,8 +68,8 @@ class AuthApiController extends Controller
         $user->tokens()->delete();
 
         // Buat token baru
-        $token = $user->createToken('api-token')->plainTextToken;
-
+        $token = $user->createToken('api-token', ['product:read'])->plainTextToken;
+        //$token = $user->createToken('api-token', ['*'])->plainTextToken;
         return response()->json([
             'status'  => 'success',
             'message' => 'Login berhasil.',
@@ -78,22 +77,6 @@ class AuthApiController extends Controller
                 'user'  => $user,
                 'token' => $token,
             ],
-        ], 200);
-    }
-
-    /**
-     * POST /api/logout
-     * Logout — hapus token yang sedang dipakai
-     * (Route ini membutuhkan middleware auth:sanctum)
-     */
-    public function logout(Request $request): JsonResponse
-    {
-        // Hapus hanya token yang digunakan saat ini
-        $request->user()->currentAccessToken()->delete();
-
-        return response()->json([
-            'status'  => 'success',
-            'message' => 'Logout berhasil.',
         ], 200);
     }
 }
